@@ -1,5 +1,5 @@
 ## Course project for week 4 of 'Getting and Cleaning Data' course on Coursera
-## from github repo jmounta1/GettingAndCleaningData/week4
+## from github repo jmounta1/GettingAndCleaningData/
 ## Project goal: create a tidy data set based on accelerometer data from the Samsung Galaxy S smartphone
 
 
