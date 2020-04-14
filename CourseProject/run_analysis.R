@@ -1,5 +1,5 @@
 ## Course project for week 4 of 'Getting and Cleaning Data' course on Coursera
-## from github repo jmounta1/GettingAndCleaningData/
+## from github repo jmounta1/GettingAndCleaningData
 ## Project goal: create a tidy data set based on accelerometer data from the Samsung Galaxy S smartphone
 
 
@@ -7,14 +7,16 @@
 library(tidyverse)
 
 # load in data - NOTE: this requires setting the working directory to include the necessary files
-vars <- scan('features.txt', what = character(), sep = '\n')
-activity_labels <- read_table('activity_labels.txt', col_names = F)
-dataset_test <- read_table('X_test.txt')
-dataset_train <- read_table('X_train.txt')
-activities_test <- read_table('y_test.txt')
-activities_train <- read_table('y_train.txt')
-subjects_test <- read_table('subject_test.txt')
-subjects_train <- read_table('subject_train.txt')
+# if you downloaded the directory and script from jmounta1/GettingAndCleaningData/tree/master/CourseProject, set the working directory to the
+  # directory that contains run_analysis.R and the UCI HAR Dataset folder
+vars <- scan('UCI HAR Dataset/features.txt', what = character(), sep = '\n')
+activity_labels <- read_table('UCI HAR Dataset/activity_labels.txt', col_names = F)
+dataset_test <- read_table('UCI HAR Dataset/test/X_test.txt')
+dataset_train <- read_table('UCI HAR Dataset/train/X_train.txt')
+activities_test <- read_table('UCI HAR Dataset/test/y_test.txt')
+activities_train <- read_table('UCI HAR Dataset/train/y_train.txt')
+subjects_test <- read_table('UCI HAR Dataset/test/subject_test.txt')
+subjects_train <- read_table('UCI HAR Dataset/train/subject_train.txt')
 
 # tidy data, label datasets
 vars <- str_extract(vars, '\\D.*')    #get rid of the numbers in front of the variable names
@@ -77,3 +79,6 @@ for (l in dataset_split2) {
   }
 }
 colnames(dataset_tidy) <- tidy_headers
+
+# to produce a new text file containing the tidy data set in the working directory, use the following code
+# write.table(dataset_tidy, file = 'jmounta1_tidydata.txt', row.names = FALSE)
