@@ -9,7 +9,7 @@
 >   5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and 
 >      each subject.
 
-The purpose of this project was to develop a script that would collect accelerometer data from a publically available dataset from Davide Anguita *et al* and tidy the data up. The data were modified to obtain the average values for several variables across each subject and each activity in the dataset. The final dataset can be found in "Samsung_Data_Tidy.txt". To load the tidy dataset into R, execute the following code:
+The purpose of this project was to develop a script that would collect accelerometer data from a publically available dataset from Davide Anguita *et al* and tidy the data up. The data were modified to obtain the average values for several variables across each subject and each activity in the dataset. The final dataset can be found in `Samsung_Data_Tidy.txt`. To load the tidy dataset into R, execute the following code:
 ```R
 tidy_table <- read.table('Samsung_Data_tidy.txt', header = TRUE)
 View(tidy_table)
@@ -18,7 +18,16 @@ View(tidy_table)
 *Please note that I did not modify the file paths in the UCI HAR Dataset directory that we downloaded for the assignment. When running the code, set the working directory as the directory that includes both the run_analysis.R script and the UCI HAR dataset directory and it will run properly.*
 
 ## Analysis Overview
-### 
+### Loading data
+Not all data from the UCI HAR Dataset was used in this analysis. See "Other Notes" below for more details. I downloaded `features.txt`, `activity_labels.txt`, `X_test.txt`, `X_train.txt`, `y_test.txt`, `y_train.txt`, `subject_test.txt`, and `subject_train.txt`.
+
+### Merging data and renaming activities
+I first added the appropriate subject numbers and activities to their respective training and test data sets. Then I merged the two datasets together using `rbind`. At this point, the activities are still labeled with numbers. I used the activity vector generated from `activity_labels.txt` to rename the activity numbers to their appropriate names.
+
+### Subsetting data and finding averages
+I used regular expressions within the `stringr` package to subset the dataset into measurements that were labeled with "mean()" or "std()". From this subset, I grouped by subject number and activity to find averages for each of those measurements and made a new dataset from these values. I wrote this dataset out to a text file called `Samsund_Data_Tidy.txt`. See "Other Notes" for more information on grouping and tidy presentation of the dataset.
+
+Also see comments in the code for more overview of the analysis.
 
 ## Other Notes
 When reading the project assignment, I was confused by the open-endedness of the prompt in a few ways. I included my interpretation of the prompt and my subsequent steps in the script to address these concerns.
