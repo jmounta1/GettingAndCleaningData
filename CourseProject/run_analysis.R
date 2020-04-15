@@ -79,4 +79,6 @@ for (l in dataset_split2) {
   }
 }
 colnames(dataset_tidy) <- tidy_headers
+
+# write tidy dataset to text file
 write.table(dataset_tidy, file = 'Samsung_Data_Tidy.txt', row.names = FALSE)
