@@ -14,7 +14,6 @@ The purpose of this project was to develop a script that would collect accelerom
 tidy_table <- read.table('Samsung_Data_tidy.txt', header = TRUE)
 View(tidy_table)
 ```
-The process is explained in more detail in the "Codebook.md" file.
 
 *Please note that I did not modify the file paths in the UCI HAR Dataset directory that we downloaded for the assignment. When running the code, set the working directory as the directory that includes both the run_analysis.R script and the UCI HAR dataset directory and it will run properly.*
 
