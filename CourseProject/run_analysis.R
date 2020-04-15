@@ -49,7 +49,6 @@ grouped_data <- group_by(dataset_subset, subject_number, activity)
 dataset_tidy <- summarize_all(grouped_data, mean, na.rm = TRUE)
 
 # label variables to make it human readable
-
 tidy_headers <- c('Subject','Activity','BodyAcceleration_Time_Avg_X','BodyAcceleration_Time_Avg_Y','BodyAcceleration_Time_Avg_Z',
                   'BodyAcceleration_Time_Std_X','BodyAcceleration_Time_Std_Y','BodyAcceleration_Time_Std_Z','Gravity_Time_Avg_X',
                   'Gravity_Time_Avg_Y','Gravity_Time_Avg_Z','Gravity_Time_Std_X','Gravity_Time_Std_Y','Gravity_Time_Std_Z','BodyJerk_Time_Avg_X',
