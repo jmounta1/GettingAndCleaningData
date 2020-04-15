@@ -56,7 +56,7 @@ for (k in dataset_split1) {    #couldn't figure out how to use apply to do this 
   index <- index + 1
 }
 dataset_tidy <- data.frame()    #initialize data frame to add the average values to, as well as tidy headers (human readable)
-tidy_headers <- c('SubjectNumber','Activity','BodyAcceleration_Time_Avg_X','BodyAcceleration_Time_Avg_Y','BodyAcceleration_Time_Avg_Z',
+tidy_headers <- c('Subject','Activity','BodyAcceleration_Time_Avg_X','BodyAcceleration_Time_Avg_Y','BodyAcceleration_Time_Avg_Z',
                   'BodyAcceleration_Time_Std_X','BodyAcceleration_Time_Std_Y','BodyAcceleration_Time_Std_Z','Gravity_Time_Avg_X',
                   'Gravity_Time_Avg_Y','Gravity_Time_Avg_Z','Gravity_Time_Std_X','Gravity_Time_Std_Y','Gravity_Time_Std_Z','BodyJerk_Time_Avg_X',
                   'BodyJerk_Time_Avg_Y','BodyJerk_Time_Avg_Z','BodyJerk_Time_Std_X','BodyJerk_Time_Std_Y','BodyJerk_Time_Std_Z',
@@ -79,6 +79,4 @@ for (l in dataset_split2) {
   }
 }
 colnames(dataset_tidy) <- tidy_headers
-
-# to produce a new text file containing the tidy data set in the working directory, use the following code
-# write.table(dataset_tidy, file = 'jmounta1_tidydata.txt', row.names = FALSE)
+write.table(dataset_tidy, file = 'Samsung_Data_Tidy.txt', row.names = FALSE)
