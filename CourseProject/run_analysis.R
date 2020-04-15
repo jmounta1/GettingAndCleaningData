@@ -38,7 +38,7 @@ dataset_total$activity <- as.numeric(dataset_total$activity)
 activity_names <- activity_labels[dataset_total$activity,]
 dataset_total$activity <- unlist(activity_names)
 
-# subset the data table to include test/training label, activity description, mean(), and std() for each measurement using regex
+# subset the data table to include test/training label, activity description, mean(), and std() for each measurement using regex in stringr
 colnames(dataset_total) <- tolower(colnames(dataset_total))
 subset <- str_which(colnames(dataset_total), '(subject_number)|(activity)|(mean\\(\\))|std\\(\\)')
 dataset_subset <- dataset_total[ ,subset]
