@@ -17,6 +17,10 @@ View(tidy_table)
 
 *Please note that I did not modify the file paths in the UCI HAR Dataset directory that we downloaded for the assignment. When running the code, set the working directory as the directory that includes both the run_analysis.R script and the UCI HAR dataset directory and it will run properly.*
 
+## Analysis Overview
+### 
+
+## Other Notes
 When reading the project assignment, I was confused by the open-endedness of the prompt in a few ways. I included my interpretation of the prompt and my subsequent steps in the script to address these concerns.
 
 ### Did not use certain files from the UCI HAR Dataset directory
