@@ -10,16 +10,18 @@ library(GSEABase)
 # read in data
 raw <- read.table('C:/Users/jmounta1/Downloads/Auto_UC5_Iressa_24hr_-_Kai_torrent-server_322.bcmatrix.xls', header = T)
 
+#temp file location for lab dekstop
+raw <- read.table('C:/Users/jmounta1/Documents/GettingAndCleaningData/Auto_UC5_Iressa_24hr_-_Kai_torrent-server_322.bcmatrix.xls', header = T)
+
 # parse only matrix of raw counts, add pseudocount
 cts <- as.matrix(raw[ ,3:10])
 
 #headers for UC5 Iressa experiment, just for reference
 headers <- c('Kai_DMSO_1','Kai_DMSO_2','Kai_DMSO_3','Kai_Iressa_1','Kai_Iressa_2','Kai_Iressa_3','Jack_DMSO_1',
                         'Jack_Iressa_1')
-
+colnames(cts) <- headers
 #normalize raw counts log2
 ctnorm <- rlogTransformation(cts)
-colnames(ctnorm) <- headers
 
 # convert raw counts to DESeqDataSet
 col_Data <- data.frame('condition' = c(rep('DMSO', 4), rep('Ir', 4)))
@@ -61,11 +63,12 @@ dev.off()
 ## file output for use in Morpheus
 morpheus_headers <- c('Gene','Kai_DMSO_1','Kai_DMSO_2','Kai_DMSO_3','Kai_Iressa_1','Kai_Iressa_2','Kai_Iressa_3','Jack_DMSO_1',
                       'Jack_Iressa_1')
-formatted <- data.frame(raw$Gene, raw[,3:10])
+formatted <- data.frame(raw$Gene, ctnorm)
 colnames(formatted) <- morpheus_headers
 write.table(formatted,'C:/Users/jmounta1/Downloads/UC5_Iressa_formatted.txt', row.names = F, col.names = T)
 EMTgenes <- scan('C:/Users/jmounta1/Downloads/geneset_EMT.txt', what = character(), skip = 2)
-EMTplus <- c(EMTgenes, 'extragene')
+#temp
+EMTgenes <- scan('C:/Users/jmounta1/Documents/GettingAndCleaningData/geneset_EMT.txt', what = character(), skip = 2)
 
 formatted_EMT <- formatted %>%
   subset(formatted$Gene %in% EMTgenes)
